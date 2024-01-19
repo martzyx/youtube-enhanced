@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "youtube-watch-total",
+    "version": "0.1.1",
+    "description": "youtube stats",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "js": ["youtubeTotalWatchLater.js"],
+            "run_at": "document_start"
+        }
+    ]
+}

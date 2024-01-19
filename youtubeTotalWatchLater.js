@@ -46,16 +46,16 @@ function sumDurations(durations) {
     return `${hours} hours, ${minutes} minutes, ${seconds} seconds`;
 }
 
-const totalDuration = sumDurations(findTimes());
-console.log(totalDuration + ' is the total time of your playlist'); 
-
-// creating div for textcontent and appending
-var timeDiv = document.createElement("div");
-timeDiv.style.color = "var(--yt-spec-text-secondary)";
-timeDiv.style.marginLeft = "1em";
-timeDiv.textContent = `Total: ${totalDuration}`;
-var publisherContainer = document.querySelectorAll("#publisher-container");
-publisherContainer.forEach((el) => {
-    el.appendChild(timeDiv);
-});
-
+setTimeout(() => {
+    const totalDuration = sumDurations(findTimes());
+    console.log(totalDuration + " is the total time of your playlist");
+    // creating div for textcontent and appending
+    var timeDiv = document.createElement("div");
+    timeDiv.style.color = "var(--yt-spec-text-secondary)";
+    timeDiv.style.marginLeft = "1em";
+    timeDiv.textContent = `Total: ${totalDuration}`;
+    var publisherContainer = document.querySelectorAll("#publisher-container");
+    publisherContainer.forEach((el) => {
+        el.appendChild(timeDiv);
+    });
+}, 5000);
