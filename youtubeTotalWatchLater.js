@@ -1,5 +1,6 @@
 function findTimes() {
     const timeEl = document.querySelectorAll(".playlist-items #text.ytd-thumbnail-overlay-time-status-renderer");
+    const timeElWL = document.querySelectorAll("ytd-playlist-video-renderer #text.ytd-thumbnail-overlay-time-status-renderer");
     let timeList = [];
     timeEl.forEach((el) => {
         let rawTime = el.getAttribute("aria-label");
@@ -65,15 +66,11 @@ function buildTimeTotal() {
     }
 }
 
-function finishLoadPage() {
-    buildTimeTotal();
-}
-
 function observeProgressElement(progressElement) {
     const observer = new MutationObserver((mutationsList, observer) => {
         for (let mutation of mutationsList) {
             if (mutation.type === "attributes" && mutation.attributeName === "hidden") {
-                finishLoadPage();
+                buildTimeTotal();
             }
         }
     });
@@ -85,6 +82,7 @@ function observeBodyElement() {
     const bodyObserver = new MutationObserver((mutationsList, observer) => {
         const progressElement = document.querySelector("yt-page-navigation-progress");
         if (progressElement) {
+            buildTimeTotal();
             observer.disconnect(); // stop observing the body
             observeProgressElement(progressElement); // start observing the progress element
         }
