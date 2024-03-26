@@ -1,6 +1,6 @@
 function findTimes() {
     const timeEl = document.querySelectorAll(".playlist-items #text.ytd-thumbnail-overlay-time-status-renderer");
-    const timeElWL = document.querySelectorAll("ytd-playlist-video-renderer #text.ytd-thumbnail-overlay-time-status-renderer");
+    // const timeElWL = document.querySelectorAll("ytd-playlist-video-renderer #text.ytd-thumbnail-overlay-time-status-renderer");
     let timeList = [];
     timeEl.forEach((el) => {
         let rawTime = el.getAttribute("aria-label");
